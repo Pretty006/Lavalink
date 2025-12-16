@@ -1,20 +1,11 @@
-server: # REST and WS server
+server:
   port: 2333
   address: 0.0.0.0
-  http2:
-    enabled: false
-
-spring:
-  application:
-    name: Excel
 
 lavalink:
-  plugins:
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.5"
-      repository: "https://maven.lavalink.dev/releases"
-
   server:
     password: "Excel"
+
     sources:
       youtube: false
       bandcamp: true
@@ -37,17 +28,14 @@ lavalink:
       channelMix: true
       lowPass: true
 
-    nonAllocatingFrameBuffer: false
     bufferDurationMs: 400
     frameBufferDurationMs: 5000
     opusEncodingQuality: 10
     resamplingQuality: LOW
     trackStuckThresholdMs: 10000
     useSeekGhosting: true
-    youtubePlaylistLoadLimit: 6
     playerUpdateInterval: 5
-    youtubeSearchEnabled: true
-    soundcloudSearchEnabled: true
+    youtubePlaylistLoadLimit: 6
     gc-warnings: true
 
     timeouts:
@@ -55,12 +43,16 @@ lavalink:
       connectionRequestTimeoutMs: 3000
       socketTimeoutMs: 3000
 
+  plugins:
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.3"
+      repository: "https://maven.lavalink.dev/releases"
+
 metrics:
   prometheus:
     enabled: false
-    endpoint: /metrics
 
 logging:
   level:
     root: INFO
     lavalink: INFO
+    
